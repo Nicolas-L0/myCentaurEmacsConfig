@@ -9,26 +9,4 @@
 
 ![Centaur Emacs](logo.png)
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-## Table of Contents
-
-- [Features](#features)
-- [Prerequisite](#prerequisite)
-  - [OS](#os)
-  - [GNU Emacs](#gnu-emacs)
-  - [Dotfiles (Optional)](#dotfiles-optional)
-- [Quick Start](#quick-start)
-  - [Install](#install)
-  - [Update](#update)
-  - [Docker](#docker)
-- [Customization](#customization)
-  - [Customize Group](#customize-group)
-  - [Manual](#manual)
-- [Hydra](#hydra)
-- [Screenshots](#screenshots)
-- [FAQ](#faq)
-- [Donate](#donate)
-
-<!-- markdown-toc end -->
 这是CentaurEmacs的个人配置文件，源项目在这里：[github:seagle0128/.emacs.d](https://github.com/seagle0128/.emacs.d)
