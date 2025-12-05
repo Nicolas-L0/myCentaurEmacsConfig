@@ -40,7 +40,7 @@
   :pretty-hydra
   ;; See `org-structure-template-alist'
   ((:title (pretty-hydra-title "Org Template" 'sucicon "nf-custom-orgmode" :face 'nerd-icons-green)
-    :color blue :quit-key ("q" "C-g"))
+           :color blue :quit-key ("q" "C-g"))
    ("Basic"
     (("a" (hot-expand "<a") "ascii")
      ("c" (hot-expand "<c") "center")
@@ -119,18 +119,33 @@ prepended to the element after the #+HEADER: tag."
   (setq org-modules nil                 ; Faster loading
         org-directory centaur-org-directory
         org-capture-templates
-        `(("i" "Idea" entry (file ,(concat org-directory "/idea.org"))
-           "*  %^{Title} %?\n%U\n%a\n")
-          ("t" "Todo" entry (file ,(concat org-directory "/gtd.org"))
-           "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-          ("n" "Note" entry (file ,(concat org-directory "/note.org"))
-           "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-          ("j" "Journal" entry (file+olp+datetree
-                                ,(concat org-directory "/journal.org"))
-           "*  %^{Title} %?\n%U\n%a\n" :clock-in t :clock-resume t)
-	      ("b" "Book" entry (file+olp+datetree
-                             ,(concat org-directory "/book.org"))
-	       "* Topic: %^{Description}  %^g %? Added: %U"))
+        '(("i" "Idea" entry
+           (file "/Users/nicolaslai/org/roam/idea.org")
+           "*  %^{Title} %?\12%U\12%a\12")
+          ("T" "Todo" entry
+           (file "/Users/nicolaslai/org/roam/gtd.org")
+           "* TODO %?\12%U\12%a\12" :clock-in t :clock-resume t)
+          ("n" "Note" entry
+           (file "/Users/nicolaslai/org/roam/note.org")
+           "* %? :NOTE:\12%U\12%a\12" :clock-in t :clock-resume t)
+          ("j" "Journal" entry
+           (file+olp+datetree "/Users/nicolaslai/org/roam/journal.org")
+           "*  %^{Title} %?\12%U\12%a\12" :clock-in t :clock-resume t)
+          ("b" "Book" entry
+           (file+olp+datetree "/Users/nicolaslai/org/roam/book.org")
+           "* Topic: %^{Description}  %^g %? Added: %U")
+          ("j" "bujo")
+          ("jj" "bullet journal" entry
+           (file+olp+datetree "main/bujo.org")
+           "* %U %?")
+          ("t" "Toby")
+          ("tw" "Toby works" entry
+           (file+olp+datetree "main/toby.org" "TOBY" "工作记录")
+           "* %?")
+          ("tm" "TOBY meetings" entry
+           (file+olp+datetree "main/toby.org" "TOBY" "工作记录")
+           "* %U Meeting: %?     :meeting:"))
+
 
         org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
@@ -140,6 +155,7 @@ prepended to the element after the #+HEADER: tag."
         org-priority-faces '((?A . error)
                              (?B . warning)
                              (?C . success))
+
 
         ;; Agenda styling
         org-agenda-files (list centaur-org-directory)
@@ -300,13 +316,32 @@ prepended to the element after the #+HEADER: tag."
     :init
     (setq org-roam-directory centaur-org-directory
           org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
-          org-roam-graph-viewer #'centaur-browse-url)
+          org-roam-graph-viewer #'centaur-browse-url
+          org-roam-capture-templates
+          '(("m" "main" plain "* ${title} %?" :target
+             (file+head "main/${slug}.org" "#+title: ${title}")
+             :immediate-finish t :unnarrowed t)
+            ("r" "reference" plain "* ${title} %?" :target
+             (file+head "reference/${slug}.org" "#+title: ${title}")
+             :immediate-finish t :unnarrowed t)
+            ("a" "article" plain "* ${title} %?" :target
+             (file+head "/${slug}.org" "#+title: ${title}")
+             :immediate-finish t :unnarrowed t)
+            ("m" "main" plain "* ${title} %?" :target
+             (file+head "main/${slug}.org" "#+title: ${title}")
+             :immediate-finish t :unnarrowed t)
+            ("m" "main" plain "* ${title} %?" :target
+             (file+head "main/${slug}.org" "#+title: ${title}")
+             :immediate-finish t :unnarrowed t))
+          )
     :config
     (unless (file-exists-p org-roam-directory)
       (make-directory org-roam-directory))
     (add-to-list 'org-agenda-files org-roam-directory)
 
     (org-roam-db-autosync-enable))
+
+
 
   (use-package org-roam-ui
     :bind ("C-c n u" . org-roam-ui-mode)

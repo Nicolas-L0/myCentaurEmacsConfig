@@ -127,49 +127,7 @@
  '(centaur-org-directory "/Users/nicolaslai/org/roam")
  '(centaur-package-archives 'tuna)
  '(centaur-theme 'random)
- '(org-capture-templates
-   '(("i" "Idea" entry
-      (file "/Users/nicolaslai/org/roam/idea.org")
-      "*  %^{Title} %?\12%U\12%a\12")
-     ("T" "Todo" entry
-      (file "/Users/nicolaslai/org/roam/gtd.org")
-      "* TODO %?\12%U\12%a\12" :clock-in t :clock-resume t)
-     ("n" "Note" entry
-      (file "/Users/nicolaslai/org/roam/note.org")
-      "* %? :NOTE:\12%U\12%a\12" :clock-in t :clock-resume t)
-     ("j" "Journal" entry
-      (file+olp+datetree "/Users/nicolaslai/org/roam/journal.org")
-      "*  %^{Title} %?\12%U\12%a\12" :clock-in t :clock-resume t)
-     ("b" "Book" entry
-      (file+olp+datetree "/Users/nicolaslai/org/roam/book.org")
-      "* Topic: %^{Description}  %^g %? Added: %U")
-     ("j" "bujo")
-     ("jj" "bullet journal" entry
-      (file+olp+datetree "main/bujo.org")
-      "* %U %?")
-     ("t" "Toby")
-     ("tw" "Toby works" entry
-      (file+olp+datetree "main/toby.org" "TOBY" "工作记录")
-      "* %?")
-     ("tm" "TOBY meetings" entry
-      (file+olp+datetree "main/toby.org" "TOBY" "工作记录")
-      "* %U Meeting: %?     :meeting:")))
- '(org-roam-capture-templates
-   '(("m" "main" plain "* ${title} %?" :target
-      (file+head "main/${slug}.org" "#+title: ${title}")
-      :immediate-finish t :unnarrowed t)
-     ("r" "reference" plain "* ${title} %?" :target
-      (file+head "reference/${slug}.org" "#+title: ${title}")
-      :immediate-finish t :unnarrowed t)
-     ("a" "article" plain "* ${title} %?" :target
-      (file+head "/${slug}.org" "#+title: ${title}")
-      :immediate-finish t :unnarrowed t)
-     ("m" "main" plain "* ${title} %?" :target
-      (file+head "main/${slug}.org" "#+title: ${title}")
-      :immediate-finish t :unnarrowed t)
-     ("m" "main" plain "* ${title} %?" :target
-      (file+head "main/${slug}.org" "#+title: ${title}")
-      :immediate-finish t :unnarrowed t))))
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
