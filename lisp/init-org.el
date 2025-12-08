@@ -119,27 +119,24 @@ prepended to the element after the #+HEADER: tag."
   (setq org-modules nil                 ; Faster loading
         org-directory centaur-org-directory
         org-capture-templates
-        '(("i" "Idea" entry
-           (file "/Users/nicolaslai/org/roam/idea.org")
-           "*  %^{Title} %?\12%U\12%a\12")
+        '(("I" "Idea" entry
+           (file+headline "inbox.org" "ideas")
+           "* %U %?     :IDEA:")
           ("T" "Todo" entry
-           (file "/Users/nicolaslai/org/roam/gtd.org")
-           "* TODO %?\12%U\12%a\12" :clock-in t :clock-resume t)
-          ("n" "Note" entry
-           (file "/Users/nicolaslai/org/roam/note.org")
-           "* %? :NOTE:\12%U\12%a\12" :clock-in t :clock-resume t)
-          ("j" "Journal" entry
-           (file+olp+datetree "/Users/nicolaslai/org/roam/journal.org")
-           "*  %^{Title} %?\12%U\12%a\12" :clock-in t :clock-resume t)
-          ("b" "Book" entry
-           (file+olp+datetree "/Users/nicolaslai/org/roam/book.org")
+           (file+headline "inbox.org" "todos")
+           "* TODO %U %?")
+          ("N" "Note" entry
+           (file+headline "inbox.org" "notes")
+           "* %U %?     :NOTE:")
+          ("B" "Book" entry
+           (file+olp+datetree "inbox.org" "books")
            "* Topic: %^{Description}  %^g %? Added: %U")
           ("j" "bujo")
           ("jj" "bullet journal" entry
            (file+olp+datetree "main/bujo.org")
            "* %U %?")
           ("t" "Toby")
-          ("tw" "Toby works" entry
+          ("tt" "Toby works" entry
            (file+olp+datetree "main/toby.org" "TOBY" "工作记录")
            "* %?")
           ("tm" "TOBY meetings" entry
