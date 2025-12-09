@@ -117,8 +117,13 @@
   (org-roam-tag-add '("draft")))
 (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-draft)
 
+;; enable ox-hugo
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :after ox)
 
 
+;; system customs
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
